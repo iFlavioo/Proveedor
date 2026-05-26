@@ -3,6 +3,7 @@ package com.example.Proveedor.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,14 @@ public class ProveedorController {
     public List<Proveedor> getProveedor() {
         return proveedorService.listar();
     }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Proveedor> obtenerPorId(@PathVariable Long id) {
+    Proveedor proveedor = proveedorService.obtenerPorId(id);
+    return ResponseEntity.ok(proveedor);
+    }
+
     
     @PutMapping("{id}")
     public Proveedor putProveedor(@PathVariable Long id, @RequestBody Proveedor proveedor) {

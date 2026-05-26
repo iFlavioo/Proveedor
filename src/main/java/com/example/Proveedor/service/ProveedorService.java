@@ -15,6 +15,10 @@ public class ProveedorService {
     public Proveedor crear(Proveedor proveedor){
         return proveedorRepository.save(proveedor);
     }
+public Proveedor obtenerPorId(Long id) {
+        return proveedorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Proveedor no encontrado con el ID: " + id));
+    }
 
     public List<Proveedor> listar() {
         return proveedorRepository.findAll();
